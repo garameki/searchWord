@@ -1,12 +1,13 @@
-@call %RUBY_HOME%kabu2\EnvSetLibrary.bat
+@rem GIT_HOME is for example "set GIT_HOME=C:\Users\username\Documents\git\"
+@ser LIBRARY_HOME=%GIT_HOME%searchWord\lib\
 
-@set RUBY_KENSAKU_PATH=%HOME%usaku\Documents\work
-@set RUBY_WORD=replace
+@rem SEARCH_DIRECTORY is the directory contains files to search a purpose word
+@set SEARCH_DIRECTORY=.\
 
+@rem SEARCH_WORD is the word for seaching
+@set SEARCH_WORD=replace
 
-
-
-
-@ruby -C%RUBY_HOME%kabu2\kensaku\ word_kensaku.rb||pause
+@rem execute ruby script
+@ruby -C%GIT_HOME%searchWord searchWord.rb||pause
 
 @pause
