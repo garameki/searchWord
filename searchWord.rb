@@ -12,7 +12,7 @@ require lib+"errorClasses.rb"
 
 
 
-
+#for future
 #まず、$folda_kabudataが   c:\\.+\\.+\\.+\\.+\\.+\\.+\\   になっていなくてはならないんだよな～
 #def initializeにて正規表現を使って確認する必要がある
 
@@ -32,6 +32,7 @@ if word==nil
 	puts;puts
 	puts "検索する文字がありません。"
 	puts "バッチファイルのローカル環境変数RUBY_WORDを設定してください"
+	puts "Please set the word to search as environment variable SEARCH_WORD in batch file."
 	puts
 	fail(StandardError)
 end
@@ -44,7 +45,8 @@ if path==nil
 	puts;puts
 	puts
 	puts "検索先が設定されていません"
-	puts "バッチファイルのローカル環境変数RUBY_KENSAKU_PATHを設定してください"
+	puts "バッチファイルのローカル環境変数SEARCH_PATHを設定してください"
+	puts "Please set the path to be searched as environment variable SEARCH_DIRECTORY in batch file"
 	puts
 	fail(StandardError)
 end
@@ -54,23 +56,27 @@ path = path.tosjis
 
 class Kensaku
 	def initialize(word,folda)
-		#word........................Stringだけど表現はRegexp
+		#word........................Stringだけど表現はRegexp this string class is regexp class
 		#rootfolda_kensaku...String
 
 		if folda == nil
-			puts "バッチファイルの環境変数RUBY_PATHを設定してください"
+			puts "バッチファイルの環境変数SEARCH_PATHを設定してください"
+			puts "Please set SEARCH_PATH in batch file"
 			fail(ValueInvalidError)
 		end		
 		if folda == ""
-			puts "検索フォルダ名が空です。環境変数RUBY_PATHを設定してください"
+			puts "検索フォルダ名が空です。環境変数SEARCH_PATHを設定してください"
+			puts "Please set SEARCH_PATH in batch file"
 			fail(ValueInvalidError)
 		end
 		if word == nil
-			puts "バッチファイルの環境変数RUBY_WORDを設定してください"
+			puts "バッチファイルの環境変数SEARCH_WORDを設定してください"
+			puts "Please set SEARCH_WORD in batch file"
 			fail(ValueInvalidError)
 		end		
 		if word == ""
-			puts "検索ワードが空です。環境変数RUBY_WORDを設定してください"
+			puts "検索ワードが空です。環境変数SEARCH_WORDを設定してください"
+			puts "Please set SEARCH_WORD in batch file"
 			fail(ValueInvalidError)
 		end
 
@@ -95,7 +101,7 @@ gets()
 
 		@files = []
 print /#{@word}/,"で"
-print "root folda = ",folda,"内を探します";puts
+print "root folda = ",folda,"内を探します searching in ",folda;puts
 
 
 	end
@@ -120,15 +126,18 @@ print "root folda = ",folda,"内を探します";puts
 			end
 		rescue RegexpError
 			puts
-			print @regexpString;puts "→正規表現が間違っています"
+			print @regexpString;puts "→正規表現が間違っています invalid regexp"
 			puts
 			raise(RegexpError)
 		rescue
-			puts
-			print "filename=",filename
-			puts
-			print "=~のエラーです。mine-typeがtextではないようです"
-			puts
+			if false
+				puts
+				print "filename=",filename
+				puts
+				print "=~のエラーです。mine-typeがtextではないようです unavailable mine-type"
+				puts
+			end
+
 			#print "p @word="
 			#p @word
 			#puts
@@ -157,7 +166,7 @@ print "root folda = ",folda,"内を探します";puts
 			puts
 			print "search=>"
 			puts folda
-			puts "フォルダが存在しません。"
+			puts "フォルダが存在しません。no file exists"
 			fail(StandardError)
 		end
 			
