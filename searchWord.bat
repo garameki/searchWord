@@ -1,5 +1,5 @@
 @rem GIT_HOME is for example "set GIT_HOME=C:\Users\username\Documents\git\"
-@ser LIBRARY_HOME=%GIT_HOME%searchWord\lib\
+@set LIBRARY_HOME=%GIT_HOME%searchWord\lib\
 
 @rem SEARCH_DIRECTORY is the directory contains files to search a purpose word
 @set SEARCH_DIRECTORY=.\

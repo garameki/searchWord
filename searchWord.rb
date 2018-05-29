@@ -127,15 +127,16 @@ print "root folda = ",folda,"内を探します";puts
 			puts
 			print "filename=",filename
 			puts
-			print "=~のエラーです。mine-typeがことなっていませんか？"
+			print "=~のエラーです。mine-typeがtextではないようです"
 			puts
 			#print "p @word="
 			#p @word
 			#puts
 			#print "p text="
 			#p text
-			print "[ENTER]"
-			gets()
+
+			#print "[ENTER]"
+			#gets()
 			
 		end
 
